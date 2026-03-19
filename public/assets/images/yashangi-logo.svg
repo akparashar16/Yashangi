@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="60" viewBox="0 0 200 60">
+  <defs>
+    <linearGradient id="pinkGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f29eb6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e6116d;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle/rounded rectangle -->
+  <rect x="0" y="0" width="200" height="60" rx="12" fill="url(#pinkGradient)" opacity="0.1"/>
+  
+  <!-- Yashangi Text -->
+  <text x="100" y="35" font-family="'Futura', 'Arial', sans-serif" font-size="28" font-weight="600" 
+        fill="url(#pinkGradient)" text-anchor="middle" letter-spacing="2px">
+    YASHANGI
+  </text>
+  
+  <!-- Decorative underline -->
+  <line x1="50" y1="42" x2="150" y2="42" stroke="url(#pinkGradient)" stroke-width="2" stroke-linecap="round"/>
+</svg>
+

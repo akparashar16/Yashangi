@@ -1,0 +1,116 @@
+/* Header Menu Visibility Fix */
+
+/* Hide toggle button on desktop - show only on mobile */
+.navbar-toggler {
+  display: block;
+}
+
+@media (min-width: 1200px) {
+  .navbar-toggler {
+    display: none !important;
+  }
+}
+
+/* CRITICAL: Ensure navbar-collapse is ALWAYS visible on desktop (xl and above) */
+/* This must override all responsive.css rules */
+/* Bootstrap 5 navbar-expand-xl automatically shows collapse on xl, but we need to override responsive.css */
+@media (min-width: 1200px) {
+  /* Use maximum specificity to override responsive.css */
+  header.menu_header .navbar-expand-xl .navbar-collapse,
+  .menu_header .navbar-expand-xl .navbar-collapse,
+  .menu_header .navbar-collapse,
+  .navbar-expand-xl .navbar-collapse.collapse,
+  .navbar-expand-xl .navbar-collapse,
+  .navbar-collapse.collapse,
+  #navbarSupportedContent {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    top: auto !important;
+    left: auto !important;
+    z-index: auto !important;
+    transform: none !important;
+  }
+  
+  .menu_header .navbar-expand-xl .navbar-nav,
+  .navbar-expand-xl .navbar-nav {
+    flex-direction: row !important;
+    align-items: center !important;
+    display: flex !important;
+    visibility: visible !important;
+  }
+  
+  .menu_header .navbar-expand-xl .navbar-nav .nav-link,
+  .navbar-expand-xl .navbar-nav .nav-link {
+    color: #fff !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    padding: 25px 25px !important;
+    white-space: nowrap !important;
+    text-transform: uppercase !important;
+  }
+  
+  .menu_header .icon_dv,
+  .icon_dv {
+    display: flex !important;
+    flex-direction: row !important;
+    visibility: visible !important;
+  }
+  
+  .menu_header .icon_dv .nav-link,
+  .icon_dv .nav-link {
+    color: #fff !important;
+    padding: 14px 8px !important;
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  .menu_header .icon_dv .nav-link svg,
+  .icon_dv .nav-link svg {
+    fill: #fff !important;
+    color: #fff !important;
+    visibility: visible !important;
+  }
+}
+
+/* Ensure nav links are white on all screens */
+.navbar-expand-xl .navbar-nav .nav-link {
+  color: #fff !important;
+}
+
+/* Ensure dropdowns work */
+.dropdown-menu {
+  position: absolute !important;
+  background: #fff !important;
+  border: 1px solid rgba(0,0,0,.15) !important;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15) !important;
+}
+
+.dropdown-item {
+  color: #212529 !important;
+  display: block !important;
+  padding: 0.5rem 1rem !important;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa !important;
+}
+
+/* Fix unique IDs for dropdowns */
+#navbarDropdownEthnic + .dropdown-menu,
+#navbarDropdownWestern + .dropdown-menu {
+  display: none;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown.show .dropdown-menu {
+  display: block !important;
+}
+
