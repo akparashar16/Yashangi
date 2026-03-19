@@ -40,7 +40,6 @@ export default function AdminVoucherDetailsPage() {
       setLoading(true);
       setError(null);
       const data = await VoucherService.getVoucherById(voucherId);
-      console.log('[VoucherDetailsPage] Voucher data:', data);
       setVoucher(data);
     } catch (err: any) {
       console.error('Error loading voucher:', err);

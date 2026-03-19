@@ -51,7 +51,6 @@ export default function AdminEditVoucherPage() {
     try {
       setLoading(true);
       const data = await VoucherService.getVoucherById(voucherId);
-      console.log('[EditVoucherPage] Voucher data:', data);
       setVoucher(data);
       
       // Format dates for datetime-local input
@@ -130,7 +129,6 @@ export default function AdminEditVoucherPage() {
         usageLimit: formData.usageLimit > 0 ? formData.usageLimit : undefined,
       });
       
-      console.log('[EditVoucherPage] Voucher updated successfully:', updatedVoucher);
       setSuccessMessage('Voucher updated successfully!');
       setError('');
       

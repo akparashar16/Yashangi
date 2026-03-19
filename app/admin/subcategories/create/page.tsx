@@ -74,7 +74,6 @@ export default function AdminCreateSubcategoryPage() {
         description: formData.description.trim() || undefined,
       });
       
-      console.log('[CreateSubcategoryPage] Subcategory created:', createdSubcategory);
       
       // Redirect to subcategories list on success
       router.push('/admin/subcategories');

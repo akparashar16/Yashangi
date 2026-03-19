@@ -65,7 +65,6 @@ const HomePage: React.FC = () => {
         
         // Initialize review slider only if reviews are loaded and element exists
         if ($('#review_slider').length && reviews && reviews.length > 0) {
-          console.log('[HomePage] Initializing review slider with', reviews.length, 'reviews...');
           try {
             // Destroy existing carousel first
             if ($('#review_slider').data('owlCarousel')) {
@@ -91,7 +90,6 @@ const HomePage: React.FC = () => {
                     992: { items: 1 }
                   }
                 });
-                console.log('[HomePage] Review slider initialized successfully');
               }
             }, 100);
           } catch (error) {
@@ -164,13 +162,11 @@ const HomePage: React.FC = () => {
           productList = pagedData.items;
           totalCount = pagedData.totalCount || 0;
           hasMorePages = pagedData.hasNext || false;
-          console.log('[HomePage] Loaded products from paginated endpoint:', productList.length, 'Page:', page);
         } else if (Array.isArray(pagedData)) {
           // Sometimes the API might return an array directly
           productList = pagedData.slice((page - 1) * pageSize, page * pageSize);
           totalCount = pagedData.length;
           hasMorePages = page * pageSize < pagedData.length;
-          console.log('[HomePage] Loaded products from array response:', productList.length);
         }
       } catch (pagedError) {
         console.warn('[HomePage] Paginated endpoint failed, trying alternatives...', pagedError);
@@ -184,7 +180,6 @@ const HomePage: React.FC = () => {
             productList = allProducts.slice(startIndex, endIndex);
             totalCount = allProducts.length;
             hasMorePages = endIndex < allProducts.length;
-            console.log('[HomePage] Loaded products from getProducts():', productList.length);
           }
         } catch (productsError) {
           console.warn('[HomePage] getProducts() failed, trying CollectionService...', productsError);
@@ -198,7 +193,6 @@ const HomePage: React.FC = () => {
               productList = topProducts.slice(startIndex, endIndex);
               totalCount = topProducts.length;
               hasMorePages = endIndex < topProducts.length;
-              console.log('[HomePage] Loaded products from CollectionService.getTopProducts():', productList.length);
             }
           } catch (topError) {
             console.error('[HomePage] All product loading methods failed:', topError);

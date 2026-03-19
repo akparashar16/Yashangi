@@ -33,14 +33,11 @@ const CartModal: React.FC = () => {
         return;
       }
       
-      console.log('[CartModal] Loading cart data for userId:', userId);
       // Pass userId to ensure correct cart is fetched
       const data = await CartService.getCartData(userId);
-      console.log('[CartModal] Cart data received:', data);
       
       if (data && data.success) {
         setCartData(data);
-        console.log('[CartModal] Cart loaded successfully:', data.items?.length || 0, 'items');
       } else {
         console.warn('[CartModal] Cart data not successful:', data);
         setCartData(data || { success: false, items: [], total: 0, itemCount: 0, message: 'Failed to load cart' });
@@ -66,14 +63,13 @@ const CartModal: React.FC = () => {
     
     // Listen for cart updates
     const handleCartUpdate = () => {
-      console.log('[CartModal] cartUpdated event received, reloading cart data...');
       loadCartData();
     };
     window.addEventListener('cartUpdated', handleCartUpdate);
     
     // Listen for custom cart modal open event
     const handleCartModalOpen = () => {
-      console.log('[CartModal] Custom cartModalOpen event triggered, loading cart data...');
+      console.log(' loading cart data...');
       loadCartData();
     };
     window.addEventListener('cartModalOpen', handleCartModalOpen);
@@ -82,12 +78,12 @@ const CartModal: React.FC = () => {
     const cartModal = document.getElementById('cart_modal');
     const handleModalShow = () => {
       // Reload cart data when modal is shown
-      console.log('[CartModal] Modal shown event, reloading cart data...');
+      console.log('reloading cart data...');
       loadCartData();
     };
     
     const handleModalHidden = () => {
-      console.log('[CartModal] Modal hidden');
+      console.log('Modal hidden');
     };
     
     if (cartModal) {
@@ -97,7 +93,7 @@ const CartModal: React.FC = () => {
     
     // Also listen for modal show event (before shown)
     const handleModalShowEvent = () => {
-      console.log('[CartModal] Modal show event triggered, loading cart data...');
+      console.log('loading cart data...');
       loadCartData();
     };
     
@@ -163,9 +159,8 @@ const CartModal: React.FC = () => {
     }, 100);
     
     try {
-      console.log('[CartModal] Removing item with cartId:', itemToRemove.cartId);
       const result = await CartService.removeCartItemAjax(itemToRemove.cartId);
-      console.log('[CartModal] Remove result:', result);
+
       
       if (result.success) {
         // If result has items, use it; otherwise reload cart data

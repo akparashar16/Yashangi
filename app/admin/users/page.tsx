@@ -44,7 +44,6 @@ export default function AdminUsersPage() {
       setLoading(true);
       setError(null);
       const data = await UserService.getAllUsers();
-      console.log('[AdminUsersPage] Loaded users:', data);
       setUsers(data);
     } catch (err: any) {
       console.error('Error loading users:', err);
@@ -75,7 +74,6 @@ export default function AdminUsersPage() {
       if (success) {
         // Reload users after delete
         await loadUsers();
-        console.log(`User "${userToDelete.name}" deleted successfully`);
       } else {
         setError('User not found or could not be deleted');
       }

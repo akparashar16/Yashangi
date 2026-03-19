@@ -45,8 +45,6 @@ export default function AdminProductsPage() {
       setLoading(true);
       setError(null);
       const data = await ProductService.getProducts();
-      console.log('[AdminProductsPage] Loaded products:', data);
-      console.log('[AdminProductsPage] Products with images:', data.filter(p => p.images && p.images.length > 0));
       setProducts(data);
     } catch (err: any) {
       console.error('Error loading products:', err);
@@ -81,7 +79,6 @@ export default function AdminProductsPage() {
       if (success) {
         // Reload products after delete
         await loadProducts();
-        console.log(`Product "${productToDelete.name}" deleted successfully`);
       } else {
         setError('Product not found or could not be deleted');
       }

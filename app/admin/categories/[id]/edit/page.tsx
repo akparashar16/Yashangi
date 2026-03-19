@@ -44,7 +44,6 @@ export default function AdminEditCategoryPage() {
     try {
       setLoading(true);
       const data = await CategoryService.getCategoryById(categoryId);
-      console.log('[EditCategoryPage] Category data:', data);
       setCategory(data);
       
       // Populate form with category data
@@ -79,7 +78,6 @@ export default function AdminEditCategoryPage() {
         description: formData.description.trim() || undefined,
       });
       
-      console.log('[EditCategoryPage] Category updated successfully:', updatedCategory);
       setSuccessMessage('Category updated successfully!');
       setError('');
       

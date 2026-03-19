@@ -68,9 +68,6 @@ export default function AdminOrdersPage() {
       }
 
       const data = await response.json();
-      console.log('[AdminOrdersPage] API Response:', data);
-      console.log('[AdminOrdersPage] API Response Type:', typeof data);
-      console.log('[AdminOrdersPage] API Response Keys:', Object.keys(data));
 
       // Handle different response formats
       let rawOrders: any[] = [];
@@ -85,10 +82,7 @@ export default function AdminOrdersPage() {
         rawOrders = data.items;
       }
 
-      console.log('[AdminOrdersPage] Raw Orders Count:', rawOrders.length);
-      if (rawOrders.length > 0) {
-        console.log('[AdminOrdersPage] First Order Sample:', JSON.stringify(rawOrders[0], null, 2));
-      }
+  
 
       // Normalize order data - handle CustomerOrderGroupDto format
       const normalizedOrders: OrderDetail[] = rawOrders.map((order: any) => {
@@ -98,20 +92,8 @@ export default function AdminOrdersPage() {
         const customerInfo = order.customerInfo || order.CustomerInfo;
         const orderDate = order.orderDate || order.OrderDate || order.createdAt || order.CreatedAt;
         
-        console.log('[AdminOrdersPage] Processing Order:', orderId);
-        console.log('[AdminOrdersPage] Order Items (raw):', orderItems);
-        console.log('[AdminOrdersPage] Order Items (type):', typeof orderItems, Array.isArray(orderItems));
-        console.log('[AdminOrdersPage] Customer Info (raw):', customerInfo);
-        console.log('[AdminOrdersPage] Customer Info Type:', typeof customerInfo);
-        if (customerInfo) {
-          console.log('[AdminOrdersPage] Customer Info Keys:', Object.keys(customerInfo));
-          console.log('[AdminOrdersPage] Customer FirstName:', customerInfo.firstName || customerInfo.FirstName);
-          console.log('[AdminOrdersPage] Customer LastName:', customerInfo.lastName || customerInfo.LastName);
-          console.log('[AdminOrdersPage] Customer Email:', customerInfo.email || customerInfo.Email);
-          console.log('[AdminOrdersPage] Customer Phone:', customerInfo.phone || customerInfo.Phone);
-        }
-        console.log('[AdminOrdersPage] Order Date (raw):', orderDate);
-        console.log('[AdminOrdersPage] Full Order Object Keys:', Object.keys(order));
+
+      
         
         // Extract customer name early for debugging
         const customerFirstName = customerInfo?.firstName || customerInfo?.FirstName || customerInfo?.first_name || customerInfo?.['firstName'] || customerInfo?.['FirstName'] || '';
@@ -119,12 +101,7 @@ export default function AdminOrdersPage() {
         const customerEmail = customerInfo?.email || customerInfo?.Email || customerInfo?.['email'] || customerInfo?.['Email'] || '';
         const customerPhone = customerInfo?.phone || customerInfo?.Phone || customerInfo?.phoneNumber || customerInfo?.PhoneNumber || customerInfo?.['phone'] || customerInfo?.['Phone'] || '';
         
-        console.log('[AdminOrdersPage] Extracted Customer Data:', {
-          firstName: customerFirstName,
-          lastName: customerLastName,
-          email: customerEmail,
-          phone: customerPhone
-        });
+      
         
         const normalizedOrder: OrderDetail = {
           id: order.id || 0,
@@ -183,7 +160,6 @@ export default function AdminOrdersPage() {
         return isPaid;
       });
 
-      console.log('[AdminOrdersPage] Loaded orders:', filteredOrders);
       setOrders(filteredOrders);
     } catch (err: any) {
       console.error('Error loading orders:', err);
@@ -315,7 +291,6 @@ export default function AdminOrdersPage() {
       const token = getToken();
       const baseUrl = environment.api.baseUrl;
 
-      console.log('[updateOrderStatus] Updating orders:', { orderIds, newStatus, baseUrl });
 
       // API controller exposes single-order status updates at:
       // PATCH /api/AdminOrders/{orderId}/status

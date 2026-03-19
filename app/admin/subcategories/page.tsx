@@ -44,7 +44,6 @@ export default function AdminSubcategoriesPage() {
       setLoading(true);
       setError(null);
       const data = await CategoryService.getAllSubcategories();
-      console.log('[AdminSubcategoriesPage] Loaded subcategories:', data);
       setSubcategories(data);
     } catch (err: any) {
       console.error('Error loading subcategories:', err);
@@ -75,7 +74,6 @@ export default function AdminSubcategoriesPage() {
       if (success) {
         // Reload subcategories after delete
         await loadSubcategories();
-        console.log(`Subcategory "${subcategoryToDelete.name}" deleted successfully`);
       } else {
         setError('Subcategory not found or could not be deleted');
       }

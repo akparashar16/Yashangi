@@ -90,7 +90,6 @@ export default function AdminCreateVoucherPage() {
         usageLimit: formData.usageLimit > 0 ? formData.usageLimit : undefined,
       });
       
-      console.log('[CreateVoucherPage] Voucher created:', createdVoucher);
       
       router.push('/admin/vouchers');
       router.refresh();

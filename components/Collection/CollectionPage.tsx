@@ -53,7 +53,6 @@ const CollectionPage: React.FC<CollectionPageProps> = ({ slug }) => {
       // Use CollectionService to fetch products by slug (matches ECommerce.Web CollectionController)
       const data = await CollectionService.getProductsBySlug(slug);
       
-      console.log(`Loaded ${data.length} products for ${collectionInfo.title}`);
       
       if (data && data.length > 0) {
         setProducts(data);

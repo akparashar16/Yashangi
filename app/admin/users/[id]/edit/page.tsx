@@ -48,7 +48,6 @@ export default function AdminEditUserPage() {
     try {
       setLoading(true);
       const data = await UserService.getUserById(userId);
-      console.log('[EditUserPage] User data:', data);
       setUser(data);
       
       // Populate form with user data (don't populate password)
@@ -111,7 +110,6 @@ export default function AdminEditUserPage() {
       // Update user
       const updatedUser = await UserService.updateUser(userId, updateData);
       
-      console.log('[EditUserPage] User updated successfully:', updatedUser);
       setSuccessMessage('User updated successfully!');
       setError('');
       

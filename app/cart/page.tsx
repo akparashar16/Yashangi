@@ -130,7 +130,6 @@ export default function CartPage() {
     }, 100);
     
     try {
-      console.log('[CartPage] Removing item with cartId:', itemToRemove.cartId);
       await CartService.removeCartItem(itemToRemove.cartId);
       // Reload cart to get updated list
       await loadCart();

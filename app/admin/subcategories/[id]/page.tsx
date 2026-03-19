@@ -41,7 +41,6 @@ export default function AdminSubcategoryDetailsPage() {
       setLoading(true);
       setError(null);
       const data = await CategoryService.getSubcategoryById(subcategoryId);
-      console.log('[SubcategoryDetailsPage] Subcategory data:', data);
       setSubcategory(data);
     } catch (err: any) {
       console.error('Error loading subcategory:', err);

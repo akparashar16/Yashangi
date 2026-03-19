@@ -41,7 +41,6 @@ export default function AdminCategoryDetailsPage() {
       setLoading(true);
       setError(null);
       const data = await CategoryService.getCategoryById(categoryId);
-      console.log('[CategoryDetailsPage] Category data:', data);
       setCategory(data);
     } catch (err: any) {
       console.error('Error loading category:', err);

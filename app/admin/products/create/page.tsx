@@ -157,8 +157,6 @@ export default function AdminCreateProductPage() {
       // Create product with images
       const createdProduct = await ProductService.createProduct(productData, selectedImages.length > 0 ? selectedImages : undefined);
       
-      console.log('[CreateProductPage] Product created:', createdProduct);
-      console.log('[CreateProductPage] Product images:', createdProduct.images);
       
       // Redirect to products list on success
       router.push('/admin/products');

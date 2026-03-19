@@ -81,9 +81,6 @@ export default function AdminEditProductPage() {
       const categoryId = (productData.categoryId || (productData as any).CategoryId)?.toString() || '';
       const subcategoryId = (productData.subcategoryId || (productData as any).subCategoryId || (productData as any).SubCategoryId)?.toString() || '';
       
-      console.log('[EditProductPage] Product data:', productData);
-      console.log('[EditProductPage] CategoryId:', categoryId);
-      console.log('[EditProductPage] SubcategoryId:', subcategoryId);
       
       // Load subcategories first if category is selected
       const categoryIdNum = productData.categoryId || (productData as any).CategoryId;
@@ -106,7 +103,6 @@ export default function AdminEditProductPage() {
 
       // Load variants from product data
       const productVariants = productData.variants || (productData as any).Variants || [];
-      console.log('[EditProductPage] Product variants:', productVariants);
       if (productVariants.length > 0) {
         setVariants(productVariants.map((v: any) => ({
           size: v.size || v.Size || '',
@@ -132,7 +128,6 @@ export default function AdminEditProductPage() {
     try {
       setLoadingSubcategories(true);
       const data = await CategoryService.getSubcategoriesByCategory(categoryId);
-      console.log('[EditProductPage] Loaded subcategories:', data);
       setSubcategories(data);
       
       // After subcategories are loaded, ensure the form data subcategoryId is still set
@@ -256,8 +251,6 @@ export default function AdminEditProductPage() {
           price: parseFloat(v.price) || price,
         }));
 
-      console.log('[EditProductPage] Variants state:', variants);
-      console.log('[EditProductPage] Prepared variants data:', variantsData);
 
       // Prepare product data
       const productData = {
@@ -273,15 +266,12 @@ export default function AdminEditProductPage() {
         variants: variantsData,
       };
 
-      console.log('[EditProductPage] Product data being sent:', productData);
-      console.log('[EditProductPage] Variants in productData:', productData.variants);
 
       // Update product with new images (if any)
       // Use encryptedId if available, otherwise use the param
       const productIdToUpdate = product?.encryptedId || productIdParam;
       const updatedProduct = await ProductService.updateProduct(productIdToUpdate, productData, selectedImages.length > 0 ? selectedImages : undefined);
       
-      console.log('[EditProductPage] Product updated successfully:', updatedProduct);
       setSuccessMessage('Product updated successfully!');
       setError('');
       

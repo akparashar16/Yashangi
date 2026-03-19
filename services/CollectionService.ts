@@ -12,7 +12,6 @@ class CollectionService {
 
   constructor() {
     this.baseUrl = environment.api.baseUrl;
-    debugger;
   }
 
   /**
@@ -33,7 +32,6 @@ class CollectionService {
 
     for (const url of endpoints) {
       try {
-        console.log(`[CollectionService] Calling API: ${url}`);
    
         const response = await fetch(url, {
           method: 'GET',
@@ -48,11 +46,9 @@ class CollectionService {
           cache: 'no-cache',
         });
 
-        console.log(`[CollectionService] Response status: ${response.status} ${response.statusText}`);
 
         if (response.ok) {
           const data = await response.json();
-          console.log('[CollectionService] API Response data:', data);
           return this.parseProductsResponse(data);
         } else {
           // Get error details from response
@@ -138,7 +134,6 @@ class CollectionService {
 
     for (const url of endpoints) {
       try {
-        console.log(`[CollectionService] Calling API: ${url}`);
         
         const response = await fetch(url, {
           method: 'GET',
@@ -153,11 +148,9 @@ class CollectionService {
           cache: 'no-cache',
         });
 
-        console.log(`[CollectionService] Response status: ${response.status} ${response.statusText}`);
 
         if (response.ok) {
           const data = await response.json();
-          console.log('[CollectionService] API Response data:', data);
           return this.parseProductsResponse(data);
         } else {
           // Get error details from response
@@ -243,7 +236,7 @@ class CollectionService {
 
     for (const url of endpoints) {
       try {
-        console.log(`[CollectionService] Calling API: ${url}`);
+  
         
         const response = await fetch(url, {
           method: 'GET',
@@ -258,11 +251,10 @@ class CollectionService {
           cache: 'no-cache',
         });
 
-        console.log(`[CollectionService] Response status: ${response.status} ${response.statusText}`);
 
         if (response.ok) {
           const data = await response.json();
-          console.log('[CollectionService] API Response data:', data);
+    
           return this.parseProductsResponse(data);
         } else {
           // Get error details from response
@@ -348,7 +340,6 @@ class CollectionService {
 
     for (const url of endpoints) {
       try {
-        console.log(`[CollectionService] Calling API: ${url}`);
         
         const response = await fetch(url, {
           method: 'GET',
@@ -363,11 +354,9 @@ class CollectionService {
           cache: 'no-cache',
         });
 
-        console.log(`[CollectionService] Response status: ${response.status} ${response.statusText}`);
 
         if (response.ok) {
           const data = await response.json();
-          console.log('[CollectionService] API Response data:', data);
           return this.parseProductsResponse(data);
         } else {
           // Get error details from response
@@ -448,7 +437,6 @@ class CollectionService {
       `${this.baseUrl}/Collection/GetDress`, // With Get prefix
       `${this.baseUrl}/collection/dress`, // lowercase controller
     ];
-debugger;
     let lastError: any = null;
 
     for (const url of endpoints) {
@@ -466,11 +454,9 @@ debugger;
           cache: 'no-cache',
         });
 
-        console.log(`[CollectionService] Response status: ${response.status} ${response.statusText}`);
 
         if (response.ok) {
           const data = await response.json();
-          console.log('[CollectionService] API Response data:', data);
           return this.parseProductsResponse(data);
         } else {
           // Get error details from response
@@ -556,7 +542,6 @@ debugger;
 
     for (const url of endpoints) {
       try {
-        console.log(`[CollectionService] Calling API: ${url}`);
         
         const response = await fetch(url, {
           method: 'GET',
@@ -571,11 +556,9 @@ debugger;
           cache: 'no-cache',
         });
 
-        console.log(`[CollectionService] Response status: ${response.status} ${response.statusText}`);
 
         if (response.ok) {
           const data = await response.json();
-          console.log('[CollectionService] API Response data:', data);
           return this.parseProductsResponse(data);
         } else {
           // Get error details from response
@@ -664,10 +647,7 @@ debugger;
     }
     
     // Debug: Log first product to verify encryptedId
-    if (products.length > 0) {
-      console.log('[CollectionService] First product from API:', products[0]);
-      console.log('[CollectionService] First product encryptedId:', products[0].encryptedId || (products[0] as any).EncryptedId);
-    }
+  
     
     // Ensure all products have encryptedId field (use it if available, otherwise keep as is)
     // Check both camelCase and PascalCase (in case JSON naming policy isn't applied)

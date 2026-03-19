@@ -14,6 +14,7 @@ export interface CreateUserData {
   lastName: string;
   role: string;
   isEmailVerified?: boolean;
+  
 }
 
 export interface UpdateUserData {

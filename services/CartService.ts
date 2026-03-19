@@ -113,12 +113,7 @@ class CartService {
     const currentUser = AuthService.getCurrentUser();
     const userId = AuthService.getCurrentUserId();
     const token = this.getToken();
-    console.log('[CartService] Current user:', currentUser ? `${currentUser.firstName} (ID: ${currentUser.userId})` : 'Not logged in');
-    console.log('[CartService] User ID:', userId);
-    console.log('[CartService] Auth token available:', token ? 'Yes' : 'No');
-    console.log('[CartService] API Base URL:', this.baseUrl);
-    console.log('[CartService] Adding product to cart:', { productId: productIdValue, size: sizeValue, quantity });
-    
+
     // Determine if productId is encrypted (string) or numeric
     const isEncryptedId = typeof productIdValue === 'string';
     
@@ -154,9 +149,6 @@ class CartService {
 
     for (const endpoint of endpoints) {
       try {
-        console.log(`[CartService] Trying to add to cart: ${endpoint.method} ${endpoint.url}`);
-        console.log(`[CartService] Request body:`, JSON.stringify(requestBody, null, 2));
-        console.log(`[CartService] Is encrypted ID: ${isEncryptedId}, Product ID value: ${productIdValue}`);
         
         // Prepare headers with Authorization token and userId
         const headers: HeadersInit = {
@@ -166,7 +158,6 @@ class CartService {
           ...(userId && { 'userId': userId.toString() }),
         };
         
-        console.log(`[CartService] Request headers:`, { ...headers, Authorization: token ? 'Bearer ***' : 'none' });
         
         const response = await fetch(endpoint.url, {
           method: endpoint.method,
@@ -177,11 +168,9 @@ class CartService {
           cache: 'no-cache',
         });
 
-        console.log(`[CartService] Response status: ${response.status} ${response.statusText}`);
-
         if (response.ok) {
           const responseData = await response.json().catch(() => ({}));
-          console.log('[CartService] Successfully added to cart. Response:', responseData);
+        
           return; // Success, exit early
         } else {
           // Get error details from response
@@ -420,7 +409,6 @@ class CartService {
           const response = await fetch(endpoint.url, fetchOptions);
 
           if (response.ok) {
-            console.log(`[CartService] Successfully removed cart item ${cartId} using ${endpoint.method} ${endpoint.url}`);
             return; // Success
           } else if (response.status === 405) {
             // Method Not Allowed - try next endpoint

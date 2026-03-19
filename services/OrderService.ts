@@ -106,10 +106,8 @@ class OrderService {
             cache: 'no-cache',
           });
           
-          console.log('Orders API Response Status:', response.status, response.statusText);
           if (response.ok) {
             const data = await response.json();
-            console.log('Orders API Response:', data);
             
             // Handle different response formats
             let rawOrders: any[] = [];
@@ -124,12 +122,10 @@ class OrderService {
               rawOrders = data.items;
             }
 
-            console.log('Extracted orders:', rawOrders);
 
             // Normalize order data first (backend already filters for completed payments)
             const normalizedOrders = rawOrders.map(order => this.normalizeOrder(order));
             
-            console.log('Normalized orders:', normalizedOrders);
 
             // Filter to show only successfully created and paid orders (additional safety check)
             const filteredOrders = normalizedOrders.filter(order => {
@@ -143,7 +139,6 @@ class OrderService {
               return isPaid;
             });
 
-            console.log('Filtered orders:', filteredOrders);
             return filteredOrders;
           } else if (response.status === 401 || response.status === 403) {
             return [];

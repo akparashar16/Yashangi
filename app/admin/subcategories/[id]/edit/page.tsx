@@ -54,8 +54,6 @@ export default function AdminEditSubcategoryPage() {
         CategoryService.getSubcategoryById(subcategoryId),
       ]);
       
-      console.log('[EditSubcategoryPage] Subcategory data:', subcategoryData);
-      console.log('[EditSubcategoryPage] Categories data:', categoriesData);
       
       setCategories(categoriesData);
       setSubcategory(subcategoryData);
@@ -101,7 +99,6 @@ export default function AdminEditSubcategoryPage() {
         description: formData.description.trim() || undefined,
       });
       
-      console.log('[EditSubcategoryPage] Subcategory updated successfully:', updatedSubcategory);
       setSuccessMessage('Subcategory updated successfully!');
       setError('');
       

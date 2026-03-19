@@ -42,11 +42,7 @@ export default function ProductDetailPage() {
       // Always use encrypted ID for fetching product details
       // The ID from URL params should already be encrypted, but we'll use it as-is
       const data = await ProductService.getProductById(productIdParam);
-      
-      // Debug: Log the received data to verify encryptedId
-      console.log('[ProductDetailPage] Received product data:', data);
-      console.log('[ProductDetailPage] Product encryptedId:', data?.encryptedId);
-      console.log('[ProductDetailPage] Product id:', data?.id);
+
       
       // Ensure we have encryptedId for future operations
       if (data && !data.encryptedId && data.id) {

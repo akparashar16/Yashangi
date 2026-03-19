@@ -74,7 +74,6 @@ export default function AdminCreateUserPage() {
         isEmailVerified: formData.isEmailVerified,
       });
       
-      console.log('[CreateUserPage] User created:', createdUser);
       
       // Redirect to users list on success
       router.push('/admin/users');

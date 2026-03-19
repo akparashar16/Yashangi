@@ -48,7 +48,6 @@ export default function AdminCreateCategoryPage() {
         description: formData.description.trim() || undefined,
       });
       
-      console.log('[CreateCategoryPage] Category created:', createdCategory);
       
       // Redirect to categories list on success
       router.push('/admin/categories');

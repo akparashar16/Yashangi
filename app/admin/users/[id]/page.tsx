@@ -41,7 +41,6 @@ export default function AdminUserDetailsPage() {
       setLoading(true);
       setError(null);
       const data = await UserService.getUserById(userId);
-      console.log('[UserDetailsPage] User data:', data);
       setUser(data);
     } catch (err: any) {
       console.error('Error loading user:', err);

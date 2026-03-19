@@ -42,7 +42,6 @@ export default function AdminVouchersPage() {
       setLoading(true);
       setError(null);
       const data = await VoucherService.getAllVouchers();
-      console.log('[AdminVouchersPage] Loaded vouchers:', data);
       setVouchers(data);
     } catch (err: any) {
       console.error('Error loading vouchers:', err);
@@ -72,7 +71,6 @@ export default function AdminVouchersPage() {
       const success = await VoucherService.deleteVoucher(voucherToDelete.id);
       if (success) {
         await loadVouchers();
-        console.log(`Voucher "${voucherToDelete.code}" deleted successfully`);
       } else {
         setError('Voucher not found or could not be deleted');
       }

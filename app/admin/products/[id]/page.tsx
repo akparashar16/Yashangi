@@ -51,9 +51,6 @@ export default function AdminProductDetailsPage() {
       if (data && !data.encryptedId) {
         console.warn('[ProductDetailsPage] Product response missing encryptedId field');
       }
-      console.log('[ProductDetailsPage] Product data:', data);
-      console.log('[ProductDetailsPage] Subcategory name:', data.subcategoryName || (data as any).subCategoryName || (data as any).SubCategoryName);
-      console.log('[ProductDetailsPage] Variants:', data.variants || (data as any).Variants);
       setProduct(data);
     } catch (err: any) {
       console.error('Error loading product:', err);

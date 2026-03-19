@@ -44,7 +44,6 @@ export default function AdminCategoriesPage() {
       setLoading(true);
       setError(null);
       const data = await CategoryService.getAllCategories();
-      console.log('[AdminCategoriesPage] Loaded categories:', data);
       setCategories(data);
     } catch (err: any) {
       console.error('Error loading categories:', err);
@@ -75,7 +74,6 @@ export default function AdminCategoriesPage() {
       if (success) {
         // Reload categories after delete
         await loadCategories();
-        console.log(`Category "${categoryToDelete.name}" deleted successfully`);
       } else {
         setError('Category not found or could not be deleted');
       }

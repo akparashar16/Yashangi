@@ -117,11 +117,11 @@ const Header: React.FC = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           
-          <Link className="navbar-brand" href="/" style={{ background: 'transparent', backgroundColor: 'transparent' }}>
+          <Link className="navbar-brand" href="/">
             <img
-              src="/assets/images/StaticProduct/brandlogo/brandlogo.png"
+              src="/assets/images/StaticProduct/icon.png"
               className="img-fluid"
-              style={{ maxHeight: '61px !important', background: 'transparent', backgroundColor: 'transparent' }}
+              style={{ maxHeight: '61px !important' }}
               alt="Yashangi"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
@@ -221,12 +221,7 @@ const Header: React.FC = () => {
             </ul>
           </div>
 
-          <div className={`collapse navbar-collapse ${showMobileMenu ? 'show' : ''}`} id="navbarSupportedContent" style={{ 
-            display: 'flex', 
-            justifyContent: 'space-between', 
-            alignItems: 'center', 
-            width: '100%' 
-          }}>
+          <div className={`collapse navbar-collapse ${showMobileMenu ? 'show' : ''}`} id="navbarSupportedContent">
             <div className="d-block d-xl-none d-flex justify-content-between align-items-center xs_head top_HdR_DblC">
               <h6>All Category</h6>
               <button
@@ -238,7 +233,7 @@ const Header: React.FC = () => {
               </button>
             </div>
 
-            <ul className="navbar-nav" style={{ flex: '0 0 auto' }}>
+            <ul className="navbar-nav ms-auto">
               <li className={`nav-item ${isActive('/') ? 'active' : ''}`}>
                 <Link className="nav-link" href="/">Home</Link>
               </li>
@@ -299,18 +294,10 @@ const Header: React.FC = () => {
               </li>
             </ul>
 
-            <ul className="navbar-nav icon_dv responsive-user-menu" style={{ 
-              marginLeft: 'auto', 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '15px', 
-              justifyContent: 'flex-end', 
-              flexDirection: 'row', 
-              flex: '0 0 auto'
-            }}>
+            <ul className="navbar-nav icon_dv" style={{ marginLeft: 'auto', display: 'flex', alignItems: 'right', gap: '15px', justifyContent: 'flex-end', width: 'auto' }}>
               {user ? (
                 <>
-                  <li className="nav-item d-flex align-items-center d-none d-md-flex">
+                  <li className="nav-item d-flex align-items-center">
                     <span className="navbar-text txtname" style={{ color: 'navajowhite !important', margin: 0 }}>
                       Hello, {user.firstName}
                     </span>
@@ -319,27 +306,16 @@ const Header: React.FC = () => {
                     <Link
                       className="nav-link txtname"
                       href="/my-orders"
-                      style={{ 
-                        color: '#ff6b9d !important', 
-                        padding: '0.5rem 0.75rem',
-                        whiteSpace: 'nowrap'
-                      }}
+                      style={{ color: '#ff6b9d !important', padding: '0.5rem 0.75rem' }}
                     >
-                      <i className="fa fa-shopping-bag"></i> <span className="d-none d-sm-inline">My Orders</span>
+                      <i className="fa fa-shopping-bag"></i> My Orders
                     </Link>
                   </li>
                   <li className="nav-item">
                     <button
                       onClick={handleLogout}
                       className="btn btn-link nav-link text-dark txtname"
-                      style={{ 
-                        color: '#ff6b9d !important', 
-                        border: 'none', 
-                        background: 'none', 
-                        padding: '0.5rem 0.75rem', 
-                        textDecoration: 'none',
-                        whiteSpace: 'nowrap'
-                      }}
+                      style={{ color: '#ff6b9d !important', border: 'none', background: 'none', padding: '0.5rem 0.75rem', textDecoration: 'none' }}
                     >
                       Logout
                     </button>
